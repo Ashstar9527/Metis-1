@@ -25,7 +25,8 @@ let orbit3Ang = 3;
 
 
 function setup() {
-  createCanvas(800, 500);
+  let cnv = createCanvas(800, 500);
+  cnv.parent('canvas-container');
   noStroke();
   background(0);
 
