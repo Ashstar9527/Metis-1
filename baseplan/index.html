@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../p5.js"></script>
+    <script src="../p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <meta charset="utf-8" />
+  </head>
+  <body>
+
+    <nav>
+      <span class="nav-logo">&#9671;</span>
+      <span class="nav-title">Métis Foundation — Atlas Vol. IX</span>
+      <span class="nav-session">&#9679; Live</span>
+    </nav>
+
+    <main>
+
+      <header>
+        <p class="org-line">Laplace Archive Division</p>
+        <h1>TARDIS</h1>
+        <p class="subtitle">Temporal Arbiter of Recursive Development and Infinite Succession</p>
+      </header>
+
+      <!-- camera frame -->
+      <div id="cam-frame">
+        <div class="cam-hud cam-hud--top">
+          <span class="cam-tag cam-tag--rec">&#9679; REC</span>
+          <span class="cam-tag cam-tag--dim">FILTERED TELEMETRY RELAY</span>
+          <span class="cam-tag cam-tag--dim" id="cam-timecode">00:00:00:00</span>
+        </div>
+        <div class="cam-corner cam-corner--tl"></div>
+        <div class="cam-corner cam-corner--tr"></div>
+        <div class="cam-corner cam-corner--bl"></div>
+        <div class="cam-corner cam-corner--br"></div>
+        <div class="cam-crosshair">
+          <div class="ch-h"></div>
+          <div class="ch-v"></div>
+          <div class="ch-ring"></div>
+        </div>
+        <div class="cam-scanlines"></div>
+        <div class="cam-vignette"></div>
+        <div id="canvas-container"></div>
+        <div class="cam-hud cam-hud--bot">
+          <span class="cam-tag">OBSERVER SHIELDED — LVL 4</span>
+          <span class="cam-tag cam-tag--warn">&#9888; 4-SEC COGNITIVE HAZARD</span>
+          <span class="cam-tag cam-tag--dim">T-00</span>
+        </div>
+      </div>
+      <script src="../sketch.js"></script>
+      <script>
+        (function () {
+          var f = 0, el = document.getElementById('cam-timecode');
+          function tick() {
+            f++;
+            var ff = f % 30, ss = Math.floor(f/30) % 60, mm = Math.floor(f/1800) % 60, hh = Math.floor(f/108000);
+            el.textContent = [hh,mm,ss,ff].map(function(n){ return String(n).padStart(2,'0'); }).join(':');
+            requestAnimationFrame(tick);
+          }
+          tick();
+        })();
+      </script>
+
+      <!-- 2×2 summary grid -->
+      <div id="summary-grid">
+        <div class="sg-cell">
+          <span class="sg-label">Scientific Name</span>
+          <p class="sg-value"><strong>TARDIS</strong></p>
+          <p class="sg-sub">Temporal Arbiter of Recursive Development and Infinite Succession. Code T-00. Class Omega Foreigner.</p>
+        </div>
+        <div class="sg-cell">
+          <span class="sg-label">Discovered By / At</span>
+          <p class="sg-value"><strong>Sept. 5, 1977</strong></p>
+          <p class="sg-sub">Passive contact via Voyager 1 Golden Record. First physical manifestation: KSC, Florida, Jan. 1980.</p>
+        </div>
+        <div class="sg-cell">
+          <span class="sg-label">Habitat</span>
+          <p class="sg-value"><strong>Non-local</strong></p>
+          <p class="sg-sub">No fixed coordinate. Current attention vector: Sol system, Earth. Continuous observation since 1977.</p>
+        </div>
+        <div class="sg-cell">
+          <span class="sg-label">Appearance</span>
+          <p class="sg-value"><strong>Radial luminous field</strong></p>
+          <p class="sg-sub">Concentric interference rings. Passive proximity artefact. Direct observation hazard — 4-sec limit unshielded.</p>
+        </div>
+      </div>
+
+    </main>
+
+  </body>
+</html>

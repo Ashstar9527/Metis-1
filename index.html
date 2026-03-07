@@ -11,9 +11,7 @@
     <div id="film-strip"></div>
     <div id="signal-rings"></div>
 
-    <!-- ═══════════════════════════════════════
-         TOP NAVIGATION BAR (false)
-         ═══════════════════════════════════════ -->
+    <!-- nav -->
     <nav id="top-nav">
       <div id="top-nav-logo-mark">&#9671;</div>
       <div id="top-nav-links">
@@ -34,74 +32,34 @@
       </div>
     </nav>
 
-    <!-- ═══════════════════════════════════════
-         LEFT GUTTER — logo + back button
-         ═══════════════════════════════════════ -->
+    <!-- left gutter -->
     <div id="left-gutter">
-      <!-- Métis Foundation logo — rotated 90° in the gutter -->
       <svg id="metis-logo" viewBox="0 0 44 130" xmlns="http://www.w3.org/2000/svg" aria-label="Métis Foundation">
-        <!-- outer ring -->
         <circle cx="22" cy="22" r="19" fill="none" stroke="var(--dark-orange)" stroke-width="1.2"/>
-        <!-- inner ring -->
         <circle cx="22" cy="22" r="12" fill="none" stroke="var(--seagrass)" stroke-width="0.8"/>
-        <!-- cardinal crosshair -->
         <line x1="22" y1="3"  x2="22" y2="41" stroke="var(--text-dim)" stroke-width="0.6"/>
         <line x1="3"  y1="22" x2="41" y2="22" stroke="var(--text-dim)" stroke-width="0.6"/>
-        <!-- diagonal crosshair -->
         <line x1="8"  y1="8"  x2="36" y2="36" stroke="var(--text-dim)" stroke-width="0.4" opacity="0.45"/>
         <line x1="36" y1="8"  x2="8"  y2="36" stroke="var(--text-dim)" stroke-width="0.4" opacity="0.45"/>
-        <!-- centre dot -->
         <circle cx="22" cy="22" r="2.6" fill="var(--dark-orange)"/>
-        <!-- cardinal tick marks -->
-        <line x1="22" y1="3"   x2="22" y2="7.5"  stroke="var(--dark-orange)" stroke-width="1.6"/>
-        <line x1="22" y1="36.5" x2="22" y2="41"  stroke="var(--dark-orange)" stroke-width="1.6"/>
-        <line x1="3"  y1="22"  x2="7.5" y2="22"  stroke="var(--dark-orange)" stroke-width="1.6"/>
-        <line x1="36.5" y1="22" x2="41" y2="22"  stroke="var(--dark-orange)" stroke-width="1.6"/>
-        <!-- divider line below reticle -->
+        <line x1="22" y1="3"    x2="22" y2="7.5"  stroke="var(--dark-orange)" stroke-width="1.6"/>
+        <line x1="22" y1="36.5" x2="22" y2="41"   stroke="var(--dark-orange)" stroke-width="1.6"/>
+        <line x1="3"  y1="22"   x2="7.5" y2="22"  stroke="var(--dark-orange)" stroke-width="1.6"/>
+        <line x1="36.5" y1="22" x2="41" y2="22"   stroke="var(--dark-orange)" stroke-width="1.6"/>
         <line x1="4" y1="48" x2="40" y2="48" stroke="var(--divider)" stroke-width="0.6"/>
-        <!-- vertical wordmark: MÉTIS -->
-        <text x="22" y="70"
-              font-family="'Barlow Condensed',sans-serif"
-              font-weight="900" font-size="10"
-              letter-spacing="3"
-              fill="var(--papaya-whip)"
-              text-anchor="middle">M</text>
-        <text x="22" y="81"
-              font-family="'Barlow Condensed',sans-serif"
-              font-weight="900" font-size="10"
-              letter-spacing="3"
-              fill="var(--papaya-whip)"
-              text-anchor="middle">É</text>
-        <text x="22" y="92"
-              font-family="'Barlow Condensed',sans-serif"
-              font-weight="900" font-size="10"
-              letter-spacing="3"
-              fill="var(--papaya-whip)"
-              text-anchor="middle">T</text>
-        <text x="22" y="103"
-              font-family="'Barlow Condensed',sans-serif"
-              font-weight="900" font-size="10"
-              letter-spacing="3"
-              fill="var(--papaya-whip)"
-              text-anchor="middle">I</text>
-        <text x="22" y="114"
-              font-family="'Barlow Condensed',sans-serif"
-              font-weight="900" font-size="10"
-              letter-spacing="3"
-              fill="var(--papaya-whip)"
-              text-anchor="middle">S</text>
+        <text x="22" y="70"  font-family="'Barlow Condensed',sans-serif" font-weight="900" font-size="10" letter-spacing="3" fill="var(--papaya-whip)" text-anchor="middle">M</text>
+        <text x="22" y="81"  font-family="'Barlow Condensed',sans-serif" font-weight="900" font-size="10" letter-spacing="3" fill="var(--papaya-whip)" text-anchor="middle">É</text>
+        <text x="22" y="92"  font-family="'Barlow Condensed',sans-serif" font-weight="900" font-size="10" letter-spacing="3" fill="var(--papaya-whip)" text-anchor="middle">T</text>
+        <text x="22" y="103" font-family="'Barlow Condensed',sans-serif" font-weight="900" font-size="10" letter-spacing="3" fill="var(--papaya-whip)" text-anchor="middle">I</text>
+        <text x="22" y="114" font-family="'Barlow Condensed',sans-serif" font-weight="900" font-size="10" letter-spacing="3" fill="var(--papaya-whip)" text-anchor="middle">S</text>
       </svg>
-
       <button id="back-btn">&#8592;</button>
     </div>
 
     <main>
 
-      <!-- ═══════════════════════════════════════
-           CLASSIFICATION BAR
-           ═══════════════════════════════════════ -->
+      <!-- classification bar -->
       <div id="classbar">
-
         <div id="classbar-top">
           <div id="classbar-id">
             <span class="cb-label">Case File</span>
@@ -119,7 +77,6 @@
             <span class="cb-level">Cosmic Top-Secret</span>
           </div>
         </div>
-
         <div id="classbar-bottom">
           <div class="cb-badge">
             <div class="badge-icon badge-entity">&#9671;</div>
@@ -152,37 +109,29 @@
             <div class="dd-cell dd-bot">&#9660;</div>
           </div>
         </div>
+      </div>
 
-      </div><!-- /#classbar -->
-
-      <!-- ── page header ── -->
+      <!-- page header -->
       <div id="page-header">
-
-        <!-- small square accent blocks -->
         <div id="accent-bars">
           <span style="background:var(--dark-orange)"></span>
           <span style="background:var(--seagrass)"></span>
           <span style="background:var(--rust-brown)"></span>
           <span style="background:var(--papaya-whip)"></span>
         </div>
-
-        <!-- full-width colour strip -->
         <div id="colour-strip">
           <div class="cs-bar" style="background:var(--dark-orange)"></div>
           <div class="cs-bar" style="background:var(--seagrass)"></div>
           <div class="cs-bar" style="background:var(--rust-brown)"></div>
           <div class="cs-bar" style="background:var(--papaya-whip)"></div>
         </div>
-
         <p id="org-line">Métis Foundation &nbsp;—&nbsp; Laplace Archive Division &nbsp;//&nbsp; Atlas Vol. IX</p>
         <h1>TARDIS</h1>
         <p id="subtitle">Temporal Arbiter of Recursive Development and Infinite Succession</p>
       </div>
 
-      <!-- ── p5 canvas — camera/video record frame ── -->
+      <!-- camera frame -->
       <div id="cam-frame">
-
-        <!-- top HUD bar -->
         <div class="cam-hud cam-hud--top">
           <div class="cam-hud-left">
             <span class="cam-tag cam-tag--rec">&#9679; REC</span>
@@ -197,30 +146,18 @@
             <span class="cam-tag">T-00</span>
           </div>
         </div>
-
-        <!-- corner brackets -->
         <div class="cam-corner cam-corner--tl"></div>
         <div class="cam-corner cam-corner--tr"></div>
         <div class="cam-corner cam-corner--bl"></div>
         <div class="cam-corner cam-corner--br"></div>
-
-        <!-- crosshair overlay -->
         <div class="cam-crosshair">
           <div class="ch-h"></div>
           <div class="ch-v"></div>
           <div class="ch-ring"></div>
         </div>
-
-        <!-- scan lines overlay -->
         <div class="cam-scanlines"></div>
-
-        <!-- vignette -->
         <div class="cam-vignette"></div>
-
-        <!-- the actual canvas -->
         <div id="canvas-container"></div>
-
-        <!-- bottom HUD bar -->
         <div class="cam-hud cam-hud--bot">
           <div class="cam-hud-left">
             <span class="cam-tag">OBSERVER SHIELDED</span>
@@ -233,33 +170,22 @@
             <span class="cam-tag cam-tag--dim">LAPLACE-09 // ATLAS VOL. IX</span>
           </div>
         </div>
-
-      </div><!-- /#cam-frame -->
+      </div>
       <script src="sketch.js"></script>
-
-      <!-- timecode counter -->
       <script>
         (function () {
-          var f = 0;
-          var tcEl = document.getElementById('cam-timecode');
+          var f = 0, el = document.getElementById('cam-timecode');
           function tick() {
             f++;
-            var ff = f % 30;
-            var ss = Math.floor(f / 30) % 60;
-            var mm = Math.floor(f / 1800) % 60;
-            var hh = Math.floor(f / 108000);
-            tcEl.textContent =
-              String(hh).padStart(2,'0') + ':' +
-              String(mm).padStart(2,'0') + ':' +
-              String(ss).padStart(2,'0') + ':' +
-              String(ff).padStart(2,'0');
+            var ff = f % 30, ss = Math.floor(f/30) % 60, mm = Math.floor(f/1800) % 60, hh = Math.floor(f/108000);
+            el.textContent = [hh,mm,ss,ff].map(function(n){ return String(n).padStart(2,'0'); }).join(':');
             requestAnimationFrame(tick);
           }
           tick();
         })();
       </script>
 
-      <!-- ── 2×2 quick-reference summary grid ── -->
+      <!-- 2×2 summary grid -->
       <div id="summary-grid">
         <div class="sg-cell">
           <span class="sg-label">Scientific Name</span>
@@ -283,9 +209,7 @@
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════
-           DOCUMENT BODY
-           ═══════════════════════════════════════ -->
+      <!-- document body -->
       <div id="doc">
 
         <!-- § I  DESIGNATION -->
@@ -296,8 +220,6 @@
             <span class="sec-tag sec-tag--admin">Admin</span>
           </h2>
           <hr class="sec-rule">
-
-          <!-- compact info table for short key-value pairs -->
           <div class="info-table">
             <div class="info-row">
               <span class="info-key">Primary Nomenclature</span>
@@ -324,7 +246,6 @@
               <span class="info-val">Active / Ongoing — filed 2008, last updated 2014</span>
             </div>
           </div>
-
           <div class="field-block field-block--highlight">
             <span class="field-key field-key--rust">Administrative Note</span>
             <p>
@@ -343,8 +264,6 @@
             <span class="sec-tag sec-tag--discovery">Historical</span>
           </h2>
           <hr class="sec-rule sec-rule--discovery">
-
-          <!-- timeline layout for dated events -->
           <div class="timeline">
 
             <div class="timeline-item">
@@ -437,8 +356,7 @@
               </div>
             </div>
 
-          </div><!-- /.timeline -->
-
+          </div>
           <div class="quote-block">
             <span class="quote-role quote-role--official">Project Lead — Dr. R. Smith / KSC 2004</span>
             <p>
@@ -475,7 +393,6 @@
             </p>
           </div>
 
-          <!-- researcher annotation -->
           <div class="annotation-block">
             <div class="annotation-avatar">YT</div>
             <div class="annotation-body">
@@ -564,7 +481,6 @@
             </p>
           </div>
 
-          <!-- field advisory alert blocks for Lancaster's warnings -->
           <div class="advisory-block">
             <span class="advisory-icon">&#9888;</span>
             <div class="advisory-content">
@@ -642,7 +558,6 @@
             </ul>
           </div>
 
-          <!-- comment thread: Huang ↔ Ashford ↔ Huang -->
           <div class="annotation-block">
             <div class="annotation-avatar">LH</div>
             <div class="annotation-body">
@@ -745,7 +660,7 @@
           </div>
         </section>
 
-        <!-- ── Recorder stamp ── -->
+        <!-- recorder stamp -->
         <div class="recorder-block">
           <span class="recorder-label">Recorder &amp; Oversight</span>
           <p>
@@ -763,7 +678,7 @@
 
       </div><!-- /#doc -->
 
-      <!-- ── Warning / Advisory block ── -->
+      <!-- warning block -->
       <div id="warning-block">
         <span class="warn-label">&#9888;&nbsp; Observer Advisory — Arbiter's Standing Order</span>
         <p>
