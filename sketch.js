@@ -4,6 +4,9 @@ let shaded
 let gazeX;
 let gazeY;
 
+let eyeShiftX = 0;
+let eyeShiftY = 0;
+
 let breath;
 let dia;
 
@@ -23,10 +26,12 @@ let orbit1Ang = 0;
 let orbit2Ang = 1;
 let orbit3Ang = 3;
 
+let probeX = 400;
+let probeY = 600;
+
 
 function setup() {
-  let cnv = createCanvas(800, 500);
-  cnv.parent('canvas-container');
+  createCanvas(800, 500).parent('canvas-container');
   noStroke();
   background(0);
 
@@ -46,6 +51,8 @@ function draw() {
   drawGrid();
   creature();
   drawBlink();
+  drawProbe()
+
 
 }
 
@@ -53,18 +60,39 @@ function creature() {
   breath = map(sin(frameCount / 40), -1, 1, -20, 20);
   gaze(width / 2, height / 2);
   smile();
-  
-  shaded.clear();
-  drawIris();
-  drawPupil();
-  drawOrbitals();
-  eraseOutside();
-  image(shaded, 0, 0)
-  
-  drawEyelids();
+  updateEyeShift();
 
+  
+  push();
+    translate(eyeShiftX, eyeShiftY);
+    shaded.clear();
+    drawIris();
+    drawPupil();
+    drawOrbitals();
+    eraseOutside();
+    image(shaded, 0, 0)
+    drawEyelids();
+  pop();
 }
 
+function drawProbe() {
+  probeX = lerp(probeX, mouseX, 0.04);
+  probeY = lerp(probeY, mouseY, 0.04);
+
+  push();
+  translate(probeX, probeY);
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  text('🛸', 0, 0);
+  pop();
+}
+
+function updateEyeShift() {
+  let targetShiftX = map(mouseX, 0, width, -40, 40);
+  let targetShiftY = map(mouseY, 0, height, -30, 30);
+  eyeShiftX = lerp(eyeShiftX, targetShiftX, 0.02);
+  eyeShiftY = lerp(eyeShiftY, targetShiftY, 0.02);
+}
 function drawOrbitals() {
   
 }
@@ -74,15 +102,15 @@ function eraseOutside() {
   shaded.noStroke();
   shaded.fill(255);
   
-  let ex = width / 2;
-  let ey = height / 2;
+  let ex = width / 2 + eyeShiftX;
+  let ey = height / 2 + eyeShiftY;
   
   let lowerLift = smileAmt * 80;
   let upperDrop = smileAmt * 60;
   let cornerLift = smileAmt * 20;
 
-  let right = 600;
-  let left = 200;
+  let right = 600 + eyeShiftX;
+  let left = 200 + eyeShiftY;
   
   shaded.beginShape();
   shaded.vertex(0, 0);
@@ -135,7 +163,7 @@ function gaze(ix, iy) {
   let toMouseX = mouseX - ix;
   let toMouseY = mouseY - iy;
 
-  if (mouseDist < 300) {
+  if (mouseDist < 400) {
     let gazeAng = atan2(toMouseY, toMouseX);
     let gazeBound = min(mouseDist, 300);
     let gazeOff = map(gazeBound, 0, 300, 0, socketR);
@@ -258,8 +286,10 @@ function drawPupil(ix, iy) {
 function drawEyelids() {
   noFill();
 
-  let ex = width / 2;
-  let ey = height / 2;
+  let ex = width / 2 + eyeShiftX;
+  let ey = height / 2 + eyeShiftY;
+  let left = 200 + eyeShiftX;
+  let right = 600 + eyeShiftY;
   
   let lowerLift = smileAmt * 80;
   let upperDrop = smileAmt * 60;
@@ -270,34 +300,34 @@ function drawEyelids() {
   stroke(25, 90, 100, 100);
   strokeWeight(10);
   bezier(
-    200 + abs(breath / 9),
+    left + abs(breath / 9),
     (ey + 130 + breath / 9 - cornerLift),
     ex - 130 + breath,
     ey - 80 + upperDrop,
     ex - 80,
     ey - 130 + breath + upperDrop,
-    600 - abs(breath / 9),
+    right - abs(breath / 9),
     ey - 130 + breath / 9 - cornerLift
   );
   strokeWeight(5);
   bezier(
-    600,
+    right,
     ey - 130 - cornerLift,
     ex + 170,
     ey + 140 - breath - lowerLift * 1.5,
     ex - 100 - breath,
     ey + 170 - lowerLift * 1.5,
-    200,
+    left,
     ey + 130 - cornerLift
   );
 
   noFill();
   bezier(
-    200 + breath / 2,
+    left + breath / 2,
     ey + 40 + breath / 2,
-    200 + 40 + breath / 2,
+    left + 40 + breath / 2,
     ey - 40 + breath / 2 + cornerDrop,
-    200 + 80 + breath/2,
+    left + 80 + breath/2,
     ey - 90 + breath / 2 + cornerDrop,
     ex - 80 + breath / 4,
     ey - 120 - breath / 4 + cornerDrop
@@ -382,7 +412,7 @@ function drawGrid() {
       // Mouse Interaction
       let dis = dist(cx, cy, gridMouseX, gridMouseY);
 
-      if (dis < 50) {
+      if (dis < 60) {
         // Target
         let tx = gridMouseX + noise(x, y, frameCount / 30) * 20;
         let ty = gridMouseY + noise(x + 999, y + 999, frameCount / 30) * 20;
